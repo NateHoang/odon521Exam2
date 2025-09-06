@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>premolar_cheatsheet.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+    <style>
+      /* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+      /*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+      body {
+        font-family: var(
+          --vscode-markdown-font-family,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe WPC',
+          'Segoe UI',
+          'Ubuntu',
+          'Droid Sans',
+          sans-serif
+        );
+        font-size: var(--vscode-markdown-font-size, 14px);
+        padding: 0 26px;
+        line-height: var(--vscode-markdown-line-height, 22px);
+        word-wrap: break-word;
+      }
+
+      #code-csp-warning {
+        position: fixed;
+        top: 0;
+        right: 0;
+        color: white;
+        margin: 16px;
+        text-align: center;
+        font-size: 12px;
+        font-family: sans-serif;
+        background-color: #444444;
+        cursor: pointer;
+        padding: 6px;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+      }
+
+      #code-csp-warning:hover {
+        text-decoration: none;
+        background-color: #007acc;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      }
+
+      body.scrollBeyondLastLine {
+        margin-bottom: calc(100vh - 22px);
+      }
+
+      body.showEditorSelection .code-line {
+        position: relative;
+      }
+
+      body.showEditorSelection .code-active-line:before,
+      body.showEditorSelection .code-line:hover:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -12px;
+        height: 100%;
+      }
+
+      body.showEditorSelection li.code-active-line:before,
+      body.showEditorSelection li.code-line:hover:before {
+        left: -30px;
+      }
+
+      .vscode-light.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(0, 0, 0, 0.15);
+      }
+
+      .vscode-light.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(0, 0, 0, 0.4);
+      }
+
+      .vscode-light.showEditorSelection .code-line .code-line:hover:before {
+        border-left: none;
+      }
+
+      .vscode-dark.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(255, 255, 255, 0.4);
+      }
+
+      .vscode-dark.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(255, 255, 255, 0.6);
+      }
+
+      .vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+        border-left: none;
+      }
+
+      .vscode-high-contrast.showEditorSelection .code-active-line:before {
+        border-left: 3px solid rgba(255, 160, 0, 0.7);
+      }
+
+      .vscode-high-contrast.showEditorSelection .code-line:hover:before {
+        border-left: 3px solid rgba(255, 160, 0, 1);
+      }
+
+      .vscode-high-contrast.showEditorSelection
+        .code-line
+        .code-line:hover:before {
+        border-left: none;
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      a:focus,
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: 1px solid -webkit-focus-ring-color;
+        outline-offset: -1px;
+      }
+
+      hr {
+        border: 0;
+        height: 2px;
+        border-bottom: 2px solid;
+      }
+
+      h1 {
+        padding-bottom: 0.3em;
+        line-height: 1.2;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: normal;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      table > thead > tr > th {
+        text-align: left;
+        border-bottom: 1px solid;
+      }
+
+      table > thead > tr > th,
+      table > thead > tr > td,
+      table > tbody > tr > th,
+      table > tbody > tr > td {
+        padding: 5px 10px;
+      }
+
+      table > tbody > tr + tr > td {
+        border-top: 1px solid;
+      }
+
+      blockquote {
+        margin: 0 7px 0 5px;
+        padding: 0 16px 0 10px;
+        border-left-width: 5px;
+        border-left-style: solid;
+      }
+
+      code {
+        font-family: Menlo, Monaco, Consolas, 'Droid Sans Mono', 'Courier New',
+          monospace, 'Droid Sans Fallback';
+        font-size: 1em;
+        line-height: 1.357em;
+      }
+
+      body.wordWrap pre {
+        white-space: pre-wrap;
+      }
+
+      pre:not(.hljs),
+      pre.hljs code > div {
+        padding: 16px;
+        border-radius: 3px;
+        overflow: auto;
+      }
+
+      pre code {
+        color: var(--vscode-editor-foreground);
+        tab-size: 4;
+      }
+
+      /** Theming */
+
+      .vscode-light pre {
+        background-color: rgba(220, 220, 220, 0.4);
+      }
+
+      .vscode-dark pre {
+        background-color: rgba(10, 10, 10, 0.4);
+      }
+
+      .vscode-high-contrast pre {
+        background-color: rgb(0, 0, 0);
+      }
+
+      .vscode-high-contrast h1 {
+        border-color: rgb(0, 0, 0);
+      }
+
+      .vscode-light table > thead > tr > th {
+        border-color: rgba(0, 0, 0, 0.69);
+      }
+
+      .vscode-dark table > thead > tr > th {
+        border-color: rgba(255, 255, 255, 0.69);
+      }
+
+      .vscode-light h1,
+      .vscode-light hr,
+      .vscode-light table > tbody > tr + tr > td {
+        border-color: rgba(0, 0, 0, 0.18);
+      }
+
+      .vscode-dark h1,
+      .vscode-dark hr,
+      .vscode-dark table > tbody > tr + tr > td {
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+    </style>
+
+    <style>
+      /* Tomorrow Theme */
+      /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+      /* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+      /* Tomorrow Comment */
+      .hljs-comment,
+      .hljs-quote {
+        color: #8e908c;
+      }
+
+      /* Tomorrow Red */
+      .hljs-variable,
+      .hljs-template-variable,
+      .hljs-tag,
+      .hljs-name,
+      .hljs-selector-id,
+      .hljs-selector-class,
+      .hljs-regexp,
+      .hljs-deletion {
+        color: #c82829;
+      }
+
+      /* Tomorrow Orange */
+      .hljs-number,
+      .hljs-built_in,
+      .hljs-builtin-name,
+      .hljs-literal,
+      .hljs-type,
+      .hljs-params,
+      .hljs-meta,
+      .hljs-link {
+        color: #f5871f;
+      }
+
+      /* Tomorrow Yellow */
+      .hljs-attribute {
+        color: #eab700;
+      }
+
+      /* Tomorrow Green */
+      .hljs-string,
+      .hljs-symbol,
+      .hljs-bullet,
+      .hljs-addition {
+        color: #718c00;
+      }
+
+      /* Tomorrow Blue */
+      .hljs-title,
+      .hljs-section {
+        color: #4271ae;
+      }
+
+      /* Tomorrow Purple */
+      .hljs-keyword,
+      .hljs-selector-tag {
+        color: #8959a8;
+      }
+
+      .hljs {
+        display: block;
+        overflow-x: auto;
+        color: #4d4d4c;
+        padding: 0.5em;
+      }
+
+      .hljs-emphasis {
+        font-style: italic;
+      }
+
+      .hljs-strong {
+        font-weight: bold;
+      }
+    </style>
+
+    <style>
+      /*
+ * Markdown PDF CSS
+ */
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI',
+          'Ubuntu', 'Droid Sans', sans-serif, 'Meiryo';
+        padding: 0 12px;
+      }
+
+      pre {
+        background-color: #f8f8f8;
+        border: 1px solid #cccccc;
+        border-radius: 3px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+      }
+
+      pre:not(.hljs) {
+        padding: 23px;
+        line-height: 19px;
+      }
+
+      blockquote {
+        background: rgba(127, 127, 127, 0.1);
+        border-color: rgba(0, 122, 204, 0.5);
+      }
+
+      .emoji {
+        height: 1.4em;
+      }
+
+      code {
+        font-size: 14px;
+        line-height: 19px;
+      }
+
+      /* for inline code */
+      :not(pre):not(.hljs) > code {
+        color: #c9ae75;
+        /* Change the old color so it seems less like an error */
+        font-size: inherit;
+      }
+
+      /* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+      .page {
+        page-break-after: always;
+      }
+    </style>
+
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+  </head>
+
+  <body>
+    <script>
+      mermaid.initialize({
+        startOnLoad: true,
+        theme:
+          document.body.classList.contains('vscode-dark') ||
+          document.body.classList.contains('vscode-high-contrast')
+            ? 'dark'
+            : 'default',
+      });
+    </script>
+    <style>
+      .tooltip {
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+      }
+
+      .tooltip img {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        max-width: 600px; /* or any desired max width */
+        width: auto; /* maintain aspect ratio */
+        height: auto; /* maintain aspect ratio */
+        border: 1px solid #ccc;
+        background: #fff;
+        padding: 5px;
+        z-index: 10;
+      }
+
+      .tooltip:hover img {
+        display: block;
+      }
+    </style>
+    <table>
+      <thead>
+        <tr>
+          <th>Teeth</th>
+          <th>Cusp count &amp; description</th>
+          <th>Occlusal shape &amp; groove pattern</th>
+          <th>Transverse ridge / central groove</th>
+          <th>Lingual cusp size &amp; function</th>
+          <th>Buccal cusp features</th>
+          <th>Crown outline &amp; lingual tilt</th>
+          <th>Proximal view &amp; contacts</th>
+          <th>Root &amp; pulp</th>
+          <th>Typical measurements (averages)</th>
+          <th>Clinical / restorative notes</th>
+          <th>Developmental lobes</th>
+          <th>Height of Contour</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <strong>Mandibular First Premolar</strong>
+            <img src="m1.png" alt="M1 cusps" width="200" />
+          </td>
+          <td>
+            • 2 cusps: long, sharp buccal cusp and very small, nonfunctional
+            lingual cusp (~2/3 crown height)
+          </td>
+          <td>
+            <span class="tooltip">
+              • Diamond-shaped occlusal table<br />
+              <img
+                src="firstIncisialView.png"
+                alt="Diamond occlusal"
+                width="200"
+              />
+            </span>
+            <span class="tooltip">
+              • Mesial and distal fossae/pits ("snake eyes") common<br />
+              <img src="m1snake.png" alt="M1 fossae" width="200" />
+            </span>
+          </td>
+          <td>
+            <span class="tooltip">
+              • Pronounced transverse ridge(s)<br />
+              • Often no central groove<br />
+              • Mesial marginal ridge parallel to transverse ridge<br />
+              • MMR less prominent/shorter than DMR<br />
+              <img src="m1ridge.png" alt="M1 transverse ridge" width="100%" />
+            </span>
+          </td>
+          <td>• Very small lingual cusp, nonfunctional</td>
+          <td>
+            • Large, pointed buccal cusp<br />
+            • Cusp tip often slightly mesial<br />
+            • Mesial cusp slope shorter than distal
+          </td>
+          <td>
+            <span class="tooltip">
+              • Occlusal diamond outline<br />
+              • Pronounced lingual tilt of crown relative to root (≈45°)<br />
+              • Almost parallel to steep triangular ridge of buccal cusp<br />
+              <img src="m1buccalcusp.png" alt="Buccal cusp" width="200" />
+            </span>
+          </td>
+          <td>
+            • Proximal view rhomboidal<br />
+            • Clinical exception: mesial contact of mandibular 1st is more
+            cervical than distal
+          </td>
+          <td>
+            <span class="tooltip">
+              • Usually single root (may rarely bifurcate)<br />
+              • 2 pulp horns (one per cusp)<br />
+              • Single canal<br />
+              <img src="m1root.png" alt="M1 root" width="200" />
+            </span>
+          </td>
+          <td>
+            • Crown length: 9 mm<br />
+            • Root length: 15 mm<br />
+            • Overall length: 23 mm<br />
+            • Crown width (MD): 7 mm<br />
+            • Faciolingual crown: 8 mm
+          </td>
+          <td>
+            • Pronounced transverse ridge + separate M & D fossae → often
+            separate Class I restorations ("snake eyes")
+          </td>
+          <td>-</td>
+          <td>
+            • Facial HoC: cervical 1/3<br />
+            • Lingual HoC: middle 1/3
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Mandibular Second Premolar</strong>
+            <img src="m2.png" alt="M2 crown" width="200" />
+          </td>
+          <td>
+            <span class="tooltip">
+              • 2–3 cusps: commonly 3-cusp type (1 buccal + 2 lingual) or 2-cusp
+              type<br />
+              • Lingual cusp(s) larger/functional vs 1st premolar<br />
+              <img src="m2cusp.png" alt="M2 cusps" width="200" />
+            </span>
+          </td>
+          <td>
+            <span class="tooltip">
+              • More square/rounded occlusal outline<br />
+              • Groove patterns: Y (three-cusp), U or H (two-cusp)<br />
+              • Central fossa present in 3-cusp type<br />
+              <li>Central groove sometimes split into M and D grooves</li>
+              <li>M groove: MB direction, ends in M pit</li>
+              <li>D groove: DB direction, slightly shorter, ends in D pit</li>
+              <img src="m2shape.png" alt="M2 occlusal" width="200" />
+            </span>
+          </td>
+          <td>
+            <span class="tooltip">
+              • Three-cusp type: 3 triangular ridges that do NOT join to form a
+              transverse ridge<br />
+              • Groove system forms central pit<br />
+              <img src="m2groove.png" alt="M2 groove pattern" width="200" />
+            </span>
+          </td>
+          <td>
+            • Lingual cusp(s) larger and functional<br />
+            • In 3-cusp type: mesiolingual cusp usually larger than distolingual
+            <li>
+              Lingual cusp shorter than Buccal cusp, but longer than mandibular
+              1st
+            </li>
+          </td>
+          <td>
+            • Buccal cusp shorter and less sharp than 1st premolar<br />
+            • Cusp slopes more rounded
+          </td>
+          <td>
+            <span class="tooltip">
+              • Occlusal outline nearer square<br />
+              • Lingual tilt present but less pronounced than 1st<br />
+              <img src="m2occ.png" alt="M2 groove patterns" width="200" />
+            </span>
+          </td>
+          <td>
+            • Proximal view rhomboidal<br />
+            • Distal contact generally more cervical than mesial (typical
+            premolar pattern)
+          </td>
+          <td>
+            <span class="tooltip">
+              • Single root, larger/longer than 1st<br />
+              • Pulp: 3 pulp horns in 3-cusp type (or 2 in 2-cusp)<br />
+              • Single canal<br />
+              <img src="m2root.png" alt="M2 root" width="200" />
+            </span>
+          </td>
+          <td>
+            • Crown length: 8 mm<br />
+            • Root length: 15 mm<br />
+            • Overall length: 22 mm<br />
+            • Crown width (MD): 7 mm<br />
+            • Faciolingual crown: 8 mm
+          </td>
+          <td>
+            <span class="tooltip">
+              • 3-cusp form has central pit/fossa → requires different
+              restorative approach<br />
+              • Less often dominated by single transverse ridge<br />
+              <img src="m2cusptip.png" alt="M2 restorative" width="200" />
+            </span>
+          </td>
+          <td>
+            • 3-cusp type: 5 lobes (3 buccal + 2 lingual) — ~55%<br />
+            • 2-cusp type: 4 lobes (3 buccal + 1 lingual) — ~45%
+          </td>
+          <td>
+            • Facial HoC: cervical 1/3<br />
+            • Lingual HoC: middle 1/3
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Maxillary First Molar</strong>
+            <img src="max1.png" alt="Max 1st premolar" width="200" />
+          </td>
+          <td>
+            • 2 cusps (B & L)<br />
+            • Buccal cusp slightly larger<br />
+            • Lingual cusp offset mesially
+          </td>
+          <td>
+            • Six-sided / hexagon occlusal outline<br />
+            • Long central groove<br />
+            • Relatively smooth occlusal table
+          </td>
+          <td>
+            • Transverse ridge formed by buccal + lingual triangular ridges<br />
+            • Central groove long, extends to MMR
+          </td>
+          <td>
+            • Lingual cusp smaller, mesially offset<br />
+            • Contributes to occlusion but lower height
+          </td>
+          <td>
+            • Buccal cusp pointed, prominent (~1 mm higher than L)<br />
+            • Mesial cusp slope often longer than distal<br />
+            • Prominent buccal ridge
+          </td>
+          <td>
+            • Crown tapers toward cervical from contacts<br />
+            • Lingual surface smaller than buccal (lingual tilt mesial)
+          </td>
+          <td>
+            • Mesial marginal groove often present<br />
+            • MMR more occlusal than DMR<br />
+            • Distal contact more buccal
+          </td>
+          <td>
+            • Usually bifurcated roots (B + L) with 2 canals and 2 pulp horns<br />
+            • Buccal root larger<br />
+            • Deep mesial concavity<br />
+            • ~20% single-rooted
+          </td>
+          <td>
+            • Buccal cusp ~1 mm higher than lingual<br />
+            • Other averages not specified
+          </td>
+          <td>
+            • Deep mesial root concavity → cleaning challenge<br />
+            • Long central groove affects restoration contour
+          </td>
+          <td>
+            • Facial = 3 lobes<br />
+            • 1 lingual lobe → total 4 lobes
+          </td>
+          <td>
+            • Facial HoC: cervical third<br />
+            • Lingual HoC: middle third
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Maxillary Second Molar</strong>
+            <img src="max2.png" alt="Max 2nd premolar" width="200" />
+          </td>
+          <td>
+            • 2 cusps (B & L) most common<br />
+            • Cusps closer in size (L larger than 1st)
+          </td>
+          <td>
+            • Rounded / trapezoidal occlusal outline<br />
+            • Shorter central groove<br />
+            • More supplemental grooves → "wrinkled" appearance
+          </td>
+          <td>
+            • Transverse ridge may be present<br />
+            • Central groove shorter, pits closer than 1st premolar
+          </td>
+          <td>
+            • Lingual cusp larger<br />
+            • Often near same height as buccal<br />
+            • More equal function
+          </td>
+          <td>
+            • Buccal cusp less sharp<br />
+            • Buccal ridge less prominent
+          </td>
+          <td>
+            • Trapezoidal outline<br />
+            • Crown centered over root<br />
+            • Less taper toward cervical
+          </td>
+          <td>
+            • No mesial/distal marginal grooves typically<br />
+            • Proximal contacts broader
+          </td>
+          <td>
+            • Usually single root / single canal<br />
+            • 2 pulp horns
+          </td>
+          <td>
+            • L ≈ B cusp height<br />
+            • Other averages not specified
+          </td>
+          <td>
+            • Supplemental grooves increase occlusal complexity<br />
+            • Easier periodontal access than 1st
+          </td>
+          <td>
+            • Facial = 3 lobes<br />
+            • 1 lingual lobe → total 4 lobes for 2-cusp type
+          </td>
+          <td>
+            • Facial HoC: cervical third<br />
+            • Lingual HoC: middle third
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>Mandibular 1st molar</strong> (#19 & #30)</td>
+          <td>
+            • 5 cusps: MB, DB, D, ML, DL<br />
+            • MB largest; D cusp may be absent sometimes
+          </td>
+          <td>
+            • Occlusal outline pentagonal<br />
+            • Central groove zig‑zag and Y‑groove pattern with central, mesial,
+            distal pits
+          </td>
+          <td>
+            • Triangular ridges of MB+ML form a transverse ridge mesially<br />
+            • DB+DL form distal transverse ridge<br />
+            • Central groove zig‑zags
+          </td>
+          <td>
+            • ML and DL cusps pointed<br />
+            • Lingual cusps more pointed than buccal<br />
+            • Contribute to occlusion and tearing
+          </td>
+          <td>
+            • Three buccal cusps: MB, DB, D<br />
+            • MB & DB grooves divide buccal cusps<br />
+            • Buccal cusps flatter than lingual
+          </td>
+          <td>
+            • Widest crown MD<br />
+            • Crown inclines lingually on roots<br />
+            • Occlusal wider at cervical third (pentagonal)
+          </td>
+          <td>
+            • Mesial contact at occlusal/middle junction<br />
+            • Distal contact in middle of crown<br />
+            • Crown tapers and is shorter toward distal
+          </td>
+          <td>
+            • Two roots (mesial & distal) with bifurcation ~3 mm from CEJ<br />
+            • Mesial root wider with concavities<br />
+            • Usually three canals and five pulp horns<br />
+            • Longest roots of molars
+          </td>
+          <td>
+            • Crown length: 10 mm (approx)<br />
+            • Root length: 14 mm (approx)<br />
+            • MD width: 10 mm (approx)<br />
+            • FL width: 10 mm (approx)
+          </td>
+          <td>
+            • Bifurcation and deep furcal concavities affect
+            endodontics/extraction<br />
+            • Complex pulp (3 canals) important for RCT<br />
+            • Transverse ridge variation (5th cusp) may alter restorability
+          </td>
+          <td>• 5 lobes (one per cusp)</td>
+          <td>
+            • Facial HoC: cervical 1/3<br />
+            • Lingual HoC: middle 1/3
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>Mandibular 2nd molar</strong> (#18 & #31)</td>
+          <td>
+            • Usually 4 cusps: MB, DB, ML, DL<br />
+            • Cusps more equal in size (mesial slightly larger)<br />
+            • Non-succedaneous; smaller and shorter than 1st
+          </td>
+          <td>
+            • Occlusal outline rectangular<br />
+            • Groove pattern typically a “+” (buccal, lingual, central grooves
+            intersect)<br />
+            • More supplemental grooves possible
+          </td>
+          <td>
+            • Two transverse ridges present (mesial and distal halves)<br />
+            • Central groove intersects buccal/lingual like a “+”
+          </td>
+          <td>
+            • ML and DL cusps pointed and sharper than buccal<br />
+            • Lingual cusps prominent in occlusion
+          </td>
+          <td>
+            • Usually only 2 buccal cusps<br />
+            • One buccal groove dividing them evenly
+          </td>
+          <td>
+            • Mesial side wider than distal<br />
+            • Crown rectangular and inclined lingually on roots<br />
+            • Root trunk longer than 1st molars
+          </td>
+          <td>
+            • Mesial contact at occlusal/middle junction<br />
+            • Distal contact in middle of crown<br />
+            • No distal cusp present
+          </td>
+          <td>
+            • Two roots (mesial & distal) less divergent than 1st<br />
+            • Mesial root broad with two canals and shallow depressions<br />
+            • Distal root usually one canal<br />
+            • Bifurcation ~3–4 mm from CEJ
+          </td>
+          <td>
+            • Crown length: 9 mm (approx)<br />
+            • Root length: 13 mm (approx)<br />
+            • MD width: 9 mm (approx)<br />
+            • FL width: 9 mm (approx)
+          </td>
+          <td>
+            • Longer root trunk and shallower furcation concavities affect perio
+            access and extractions<br />
+            • More supplemental grooves can complicate restorations/occlusal
+            anatomy
+          </td>
+          <td>• 4 lobes (one per cusp)</td>
+          <td>
+            • Facial HoC: cervical 1/3<br />
+            • Lingual HoC: middle 1/3
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>Mandibular 3rd molar</strong> (#17 & #32)</td>
+          <td>
+            • Highly variable; generally smaller in all dimensions<br />
+            • Morphology inconsistent; mesial cusps commonly larger than distal
+            cusps
+          </td>
+          <td>
+            • Occlusal appears wrinkled due to irregular and numerous
+            supplemental grooves and pits<br />
+            • No standard occlusal form
+          </td>
+          <td>
+            • Transverse ridges/central groove not consistent<br />
+            • Irregular groove patterns and many supplemental grooves
+          </td>
+          <td>
+            • Two mesial cusps often larger than distal cusps<br />
+            • Lingual cusp size and function vary with morphology
+          </td>
+          <td>
+            • Buccal cusp number/shape variable<br />
+            • May resemble 1st or 2nd molar forms or be reduced/irregular
+          </td>
+          <td>
+            • Crown smaller and variable<br />
+            • Shape unpredictable<br />
+            • May show irregular occlusal table and lingual tilt depending on
+            individual tooth
+          </td>
+          <td>
+            • Mesial contact in middle third<br />
+            • Often no distal contact<br />
+            • Proximal contacts and contours variable
+          </td>
+          <td>
+            • Roots often fused or irregularly curved with sharp apices<br />
+            • Increased chance of fusion which complicates endo/exodontia<br />
+            • Pulp/root anatomy highly variable
+          </td>
+          <td>
+            • Crown and root lengths smallest of molars<br />
+            • MD/FL widths also smaller
+          </td>
+          <td>
+            • Variable anatomy and frequent root fusion/curvature increase
+            extraction complexity<br />
+            • Affects restorative planning<br />
+            • Unpredictable occlusal anatomy complicates prosthetic contours
+          </td>
+          <td>
+            • Developmental pattern variable; no standard lobe/cusp count —
+            morphology irregular
+          </td>
+          <td>
+            • Facial HoC: cervical 1/3<br />
+            • Lingual HoC: middle 1/3 (general mandibular molar rule)
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    Made by Nathan Hoang will add more molars by tonight Sept 6th 2025
+  </body>
+</html>
